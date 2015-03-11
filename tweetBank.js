@@ -4,7 +4,8 @@ var data = [];
 
 
 var add = function (name, text) {
-  data.push({ name: name, text: text });
+
+  data.push({ name: name, text: text, id: Math.floor(Math.random() * 1000 + 1)});
 };
 
 var list = function () {

@@ -40,6 +40,21 @@ body {
 code {
   font-size: 80%;
 }
+
+.tweetName{
+  font-weight: bold;
+  font-size: 120%;
+  list-style-type: none;
+}
+
+.tweetText{
+   list-style-type: none;
+}
+
+.tweetLink{
+  list-style-type: none;
+  margin-bottom: 20px;
+}
  
 .tweetbox {
   padding: 7px;

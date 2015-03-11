@@ -8,4 +8,20 @@ router.get('/', function (req, res) {
   res.render( 'index', { title: 'Twitter.js', tweets: tweets } );
 });
 
+router.get('/users/:name', function(req, res) {
+  var name = req.params.name;
+  var list = tweetBank.find( {name: name} );
+  res.render( 'index', { title: 'Twitter.js - Posts by '+ name, tweets: list } );
+});
+
+router.get('/users/:name/tweets/:id', function(req, res) {
+	var name = req.params.name;
+	var id = req.params.id;
+	console.log("this is the id " + typeof id);
+	console.log("this is the name " + name);
+	var singleTweet = tweetBank.find( {id: Number(id) });
+	console.log("the singleTweet is: " + singleTweet);
+	res.render('index', { title: 'Twitter.js - Posts by '+ name, tweets: singleTweet } );
+});
+
 module.exports = router;
