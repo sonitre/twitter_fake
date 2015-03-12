@@ -16,12 +16,25 @@
     	<h1>All Tweets</h1>
       <!-- display tweets here -->
       {% for tweet in tweets %}
-       <!--  <img src="../public/muffin.jpg"/> -->
+        <img src="http://s5.favim.com/orig/69/drawing-english-english-muffin-muffin-Favim.com-635863.jpg">
         <li class = "tweetName"><img>{{tweet.name}}</li>
         <li class = "tweetText">{{tweet.text}}</li>
   			<li class = "tweetLink"><a href="/users/{{tweet.name}}">{{tweet.name}}</a></li>
 
       {% endfor %}
+
+      {% if showForm %}
+		  <form action="/submit" method="POST">
+		    <label for="name_field">Name:</label>
+
+		    <input name="name" type="text" id="name_field" value= "{{name}}"/>
+
+		    <label for="text_field">Text:</label>
+		    <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+		    <input type="submit" value="Submit" />
+		  </form>
+			{% endif %}
 
       
     </div>

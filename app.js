@@ -3,15 +3,24 @@ var morgan = require( 'morgan' );
 var swig = require('swig');
 var app = express();
 var routes = require('./routes/');
+var bodyParser = require('body-parser');
+var socketio = require('socket.io');
 
 
-app.use('/', routes);
+//Middleware
+var server = app.listen(3000);
+var io = socketio.listen(server);
 
-//Listen on port 3000, turn off caching
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/', routes(io));
 app.use(morgan('dev'));
 
-app.listen(3000);
 
+
+
+
+//Render with swig
 swig.setDefaults({ cache: false });
 
 app.use(express.static(__dirname + '/public'));
